@@ -1,5 +1,4 @@
-// mockInterceptor.ts
-const originalFetch = window.fetch;
+const originalFetch = window.fetch.bind(window);
 
 let transactions: any[] = [];
 let networkMode = "ONLINE";
@@ -95,6 +94,14 @@ window.fetch = async (input, init) => {
   // Mock profile API returning empty/default wrapper
   if (url.includes("/api/profiles/")) {
     return new Response(JSON.stringify({ trust_score: 85 }), { status: 200, headers: { "Content-Type": "application/json" } });
+  }
+
+  if (url.includes("/api/simulation/run-demo")) {
+    return new Response(JSON.stringify({ success: true, message: "Demo initialized" }), { status: 200, headers: { "Content-Type": "application/json" } });
+  }
+
+  if (url.includes("/api/transactions/sync")) {
+    return new Response(JSON.stringify({ synced: 1, message: "Synced" }), { status: 200, headers: { "Content-Type": "application/json" } });
   }
 
   // All other API queries return 200 OK empty array or object
