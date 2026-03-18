@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "ArthaSetu – Merchant Assurance Layer"
+version = "1.0.0"
+id = "artifacts/arthasetu-mal"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 18473
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/arthasetu-mal run dev"
+
+[services.env]
+PORT = "18473"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/arthasetu-mal", "run", "build"]
+publicDir = "artifacts/arthasetu-mal/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"

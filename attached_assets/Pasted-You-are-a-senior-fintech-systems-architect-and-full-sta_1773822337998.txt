@@ -1,0 +1,292 @@
+You are a senior fintech systems architect and full-stack engineer.
+
+Build a COMPLETE working prototype of a fintech system called:
+
+**ArthaSetu – Merchant Assurance Layer (MAL)**
+
+This is NOT an offline banking system. It is a **merchant-side decision engine for uncertain or failed digital payments**.
+
+The system must simulate how merchants can **accept or reject payments based on confidence scoring when network/bank confirmation is unavailable**.
+
+---
+
+# 🧠 CORE IDEA
+
+When a payment is attempted:
+
+* It may not be confirmed (network failure)
+* Instead of failing, the system:
+
+  1. captures transaction intent
+  2. generates a verifiable proof
+  3. calculates a risk/confidence score
+  4. allows merchant to decide
+
+---
+
+# 🧩 TECH STACK
+
+Frontend:
+
+* React (preferred) or simple HTML + JS
+* Tailwind CSS for UI
+
+Backend:
+
+* Python Flask API
+
+Storage:
+
+* JSON-based (simulate DB)
+
+Optional:
+
+* WebSockets (if easy)
+
+---
+
+# 🧱 CORE FEATURES TO IMPLEMENT
+
+---
+
+## 1️⃣ USER ROLES
+
+Create 3 roles:
+
+* Customer
+* Merchant
+* System/Admin
+
+Each should have UI panels.
+
+---
+
+## 2️⃣ TRANSACTION CREATION
+
+Customer enters:
+
+* amount
+* merchant
+
+System generates:
+
+{
+txn_id,
+amount,
+customer_id,
+merchant_id,
+timestamp,
+status: "PENDING"
+}
+
+---
+
+## 3️⃣ LOCAL PROOF GENERATION (IMPORTANT)
+
+Simulate a cryptographic proof:
+
+signature = hash(txn_id + amount + timestamp)
+
+Attach this to transaction.
+
+Display it in UI as:
+
+"Transaction Proof Generated"
+
+---
+
+## 4️⃣ NETWORK SIMULATION
+
+Add toggle:
+
+* ONLINE
+* OFFLINE
+
+Behavior:
+
+OFFLINE:
+
+* no backend confirmation
+* transaction remains "UNCONFIRMED"
+
+ONLINE:
+
+* allow sync
+* mark transaction as SUCCESS/FAILED
+
+---
+
+## 5️⃣ RISK / CONFIDENCE ENGINE (CORE FEATURE)
+
+Create function:
+
+risk_score(txn, user_behavior)
+
+Rules:
+
+* small amount → +20
+* repeat user → +20
+* frequent transactions → -30
+* suspicious pattern → -40
+
+Final score between 0–100
+
+Display:
+
+* 80–100 → HIGH CONFIDENCE (green)
+* 50–79 → MEDIUM (yellow)
+* <50 → LOW (red)
+
+---
+
+## 6️⃣ MERCHANT DECISION PANEL
+
+Merchant sees:
+
+* incoming transaction
+* amount
+* status: UNCONFIRMED
+* confidence score
+
+Options:
+
+✔ Accept Payment
+⚠ Accept with Risk
+❌ Reject
+
+Store merchant decision.
+
+---
+
+## 7️⃣ FRAUD SIMULATION
+
+Add buttons:
+
+* “Simulate Double Attempt”
+* “Simulate Rapid Transactions”
+* “Simulate Fake Retry”
+
+System should:
+
+* reduce confidence score
+* show alert
+* log event
+
+---
+
+## 8️⃣ SYNC ENGINE
+
+When ONLINE:
+
+* send all pending transactions to backend
+* randomly mark:
+
+SUCCESS or FAILED
+
+Update UI.
+
+---
+
+## 9️⃣ LOGGING SYSTEM
+
+Display live logs:
+
+[INFO] Transaction created
+[INFO] Proof generated
+[WARNING] Risk detected
+[SYNC] Transaction updated
+
+---
+
+## 🔟 DASHBOARD UI
+
+Create 3 panels:
+
+---
+
+### Customer Panel
+
+* enter payment
+* send transaction
+* see status
+
+---
+
+### Merchant Panel (MOST IMPORTANT)
+
+* see transactions
+* see confidence score
+* accept/reject
+* see final status
+
+---
+
+### System Panel
+
+* network toggle
+* logs
+* sync button
+
+---
+
+## 1️⃣1️⃣ DEMO MODE
+
+Add button:
+
+“Run Demo”
+
+Auto flow:
+
+1. create transaction
+2. switch OFFLINE
+3. show pending
+4. calculate confidence
+5. merchant accepts
+6. simulate fraud
+7. switch ONLINE
+8. sync result
+
+---
+
+## 🎨 UI REQUIREMENTS
+
+* modern fintech dashboard style
+* clean cards
+* color coding:
+
+Green → success
+Yellow → warning
+Red → risk
+
+* smooth transitions (basic)
+
+---
+
+## 📦 OUTPUT
+
+Generate:
+
+* complete frontend
+* Flask backend
+* API routes
+* sample data
+* instructions to run
+
+Must run fully inside Replit.
+
+---
+
+# 🎯 FINAL GOAL
+
+The system should clearly demonstrate:
+
+* payment uncertainty handling
+* merchant decision making
+* confidence scoring
+* offline → online transition
+
+A judge should understand the product in under 30 seconds.
+
+---
+
+Build step-by-step and ensure everything works together cleanly.

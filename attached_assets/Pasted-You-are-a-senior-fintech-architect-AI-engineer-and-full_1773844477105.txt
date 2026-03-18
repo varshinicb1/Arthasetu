@@ -1,0 +1,362 @@
+You are a senior fintech architect, AI engineer, and full-stack developer.
+
+Build a COMPLETE, production-style prototype of a fintech system called:
+
+# **ArthaSetu – Trust Orchestration Layer for Uncertain Digital Payments**
+
+---
+
+# 🧠 CORE IDEA
+
+This system is NOT a payment system.
+
+It is a **merchant-side intelligence layer** that helps decide:
+
+👉 "Should this payment be trusted right now?"
+
+Even when:
+
+* network is unavailable
+* bank confirmation is delayed
+* payment status is uncertain
+
+---
+
+# 🎯 SYSTEM GOAL
+
+Create a **fully interactive, visually impressive demo platform** that simulates:
+
+* uncertain payments
+* fraud attempts
+* trust scoring
+* merchant decision-making
+
+The system must look like a **real fintech startup product**.
+
+---
+
+# 🧩 TECH STACK
+
+Frontend:
+
+* React + Tailwind CSS
+* Clean fintech dashboard UI
+
+Backend:
+
+* Python (Flask or FastAPI)
+
+Storage:
+
+* JSON-based database
+
+Optional:
+
+* WebSockets for live updates
+
+---
+
+# 🧱 CORE SYSTEM MODULES
+
+---
+
+## 1️⃣ USER SYSTEM
+
+Create 3 roles:
+
+* Customer
+* Merchant
+* System/Admin
+
+Each has its own dashboard.
+
+---
+
+## 2️⃣ TRANSACTION INTENT CAPTURE
+
+Customer enters:
+
+* amount
+* merchant
+
+System generates:
+
+{
+txn_id,
+amount,
+customer_id,
+merchant_id,
+timestamp,
+status: "UNCONFIRMED"
+}
+
+---
+
+## 3️⃣ PROOF ENGINE (INSPIRED BY CRYPTO SYSTEMS)
+
+Simulate lightweight cryptographic proof:
+
+signature = SHA256(txn_id + amount + timestamp)
+
+Add:
+
+* proof_id
+* proof_strength (HIGH / MEDIUM / LOW)
+
+Display:
+
+"Transaction Proof Generated ✔"
+
+---
+
+## 4️⃣ NETWORK SIMULATION
+
+Toggle:
+
+* ONLINE
+* OFFLINE
+
+OFFLINE:
+
+* no bank confirmation
+* transactions remain uncertain
+
+ONLINE:
+
+* allow sync
+* mark SUCCESS / FAILED
+
+---
+
+## 5️⃣ TRUST ENGINE (CORE INNOVATION)
+
+Create a **Trust Score (0–100)**
+
+Based on:
+
+### Transaction Features:
+
+* amount size
+* frequency
+* retry attempts
+
+### User Behavior:
+
+* past success rate
+* fraud history
+
+### Proof Signals:
+
+* proof strength
+* signature validity
+
+---
+
+## 6️⃣ TRUST MEMORY SYSTEM (VERY IMPORTANT)
+
+Maintain per-user profile:
+
+{
+success_rate,
+fraud_count,
+avg_transaction,
+reliability_score
+}
+
+Update after each transaction.
+
+Use this in scoring.
+
+---
+
+## 7️⃣ FRAUD DETECTION ENGINE
+
+Simulate:
+
+* double attempt
+* rapid retry
+* fake proof
+* high-risk transaction
+
+System should:
+
+* reduce trust score
+* show alerts
+* log events
+
+---
+
+## 8️⃣ MERCHANT DECISION ENGINE
+
+Merchant sees:
+
+* amount
+* status: UNCONFIRMED
+* trust score
+* risk level
+
+Options:
+
+✔ Accept
+⚠ Accept with Risk
+❌ Reject
+
+Store decision.
+
+---
+
+## 9️⃣ CONFIDENCE EXPLAINABILITY (IMPORTANT)
+
+Show breakdown:
+
+Trust Score: 82%
+
+* Trusted user (+20)
+* Small amount (+15)
+
+- Rapid retry (-10)
+
+* Valid proof (+20)
+
+---
+
+## 🔟 SYNC ENGINE
+
+When ONLINE:
+
+* send pending transactions
+* randomly mark:
+
+SUCCESS or FAILED
+
+Update:
+
+* merchant decision vs actual outcome
+* trust memory
+
+---
+
+## 1️⃣1️⃣ LIVE LOGGING SYSTEM
+
+Display logs:
+
+[INFO] Transaction created
+[INFO] Proof generated
+[INFO] Trust score computed
+[WARNING] Fraud detected
+[DECISION] Merchant accepted
+[SYNC] Transaction resolved
+
+---
+
+## 1️⃣2️⃣ DASHBOARD UI (CRITICAL)
+
+---
+
+### 🟢 Customer Panel
+
+* send payment
+* view history
+
+---
+
+### 🔵 Merchant Panel (MAIN FOCUS)
+
+* see incoming transactions
+* trust score
+* decision buttons
+* fraud alerts
+
+---
+
+### 🟡 System Panel
+
+* network toggle
+* logs
+* sync button
+
+---
+
+## 1️⃣3️⃣ DEMO MODE (CINEMATIC)
+
+Add button:
+
+👉 "Start Demo"
+
+Auto-run:
+
+1. normal payment
+2. network failure
+3. proof generation
+4. trust score shown
+5. merchant accepts
+6. fraud attempt triggered
+7. trust drops
+8. merchant rejects
+9. network returns
+10. sync completes
+
+Include:
+
+* overlays
+* animations
+* highlights
+
+---
+
+## 🎨 UI REQUIREMENTS
+
+* modern fintech design
+* cards + panels
+* smooth transitions
+* color coding:
+
+Green → safe
+Yellow → caution
+Red → risk
+
+---
+
+## 📊 OPTIONAL (HIGH IMPACT)
+
+Add charts:
+
+* trust score trends
+* fraud attempts
+* merchant decisions
+
+---
+
+## 📦 OUTPUT
+
+Generate:
+
+* full frontend code
+* backend API
+* sample data
+* instructions to run
+
+Must work inside Replit.
+
+---
+
+# 🎯 FINAL GOAL
+
+The system must clearly demonstrate:
+
+* uncertainty in payments
+* trust scoring
+* fraud detection
+* merchant decision-making
+
+A judge should understand the product in 30 seconds.
+
+---
+
+# 🚀 BUILD APPROACH
+
+* build step-by-step
+* ensure working integration
+* prioritize UI clarity + demo experience
+
+This should feel like a **real fintech product demo, not a college project**.
