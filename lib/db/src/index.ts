@@ -1,16 +1,21 @@
-import { drizzle } from "drizzle-orm/node-postgres";
-import pg from "pg";
+import { PGlite } from "@electric-sql/pglite";
+import { drizzle } from "drizzle-orm/pglite";
 import * as schema from "./schema";
 
-const { Pool } = pg;
+// Initialize a persistent local Postgres database via WASM
+const client = new PGlite("./arthasetu_local_db");
+export const db = drizzle(client, { schema });
 
-if (!process.env.DATABASE_URL) {
-  throw new Error(
-    "DATABASE_URL must be set. Did you forget to provision a database?",
+// Auto-migrate tables since it's a local embedded DB
+client.exec(`
+  CREATE TABLE IF NOT EXISTS user_profiles (
+    id VARCHAR PRIMARY KEY,
+    name VARCHAR,
+    trust_score INTEGER DEFAULT 50,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
-}
-
-export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-export const db = drizzle(pool, { schema });
+  -- Simplistic mock table setup for demo
+`).catch(console.error);
 
 export * from "./schema";
